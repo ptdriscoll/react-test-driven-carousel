@@ -1,6 +1,11 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow, mount, configure } from 'enzyme';
 import CarouselSlide from '../CarouselSlide';
+
+import Adapter from 'enzyme-adapter-react-16';
+import 'jest-styled-components';
+
+configure({ adapter: new Adapter() });
 
 describe('CarouselSlide', () => {
   let wrapper;
@@ -60,5 +65,16 @@ describe('Img', () => {
 
   it('renders an <img> with the given src', () => {
     expect(mounted.containsMatchingElement(<img src={imgUrl} />)).toBe(true);
+  });
+
+  it('has the expected static styles', () => {
+    expect(mounted).toHaveStyleRule('width', '100%');
+    expect(mounted).toHaveStyleRule('object-fit', 'cover');
+  });
+
+  it('uses imgHeight as the height style property', () => {
+    expect(mounted).toHaveStyleRule('height', '500px');
+    mounted.setProps({ imgHeight: 'calc(100vh - 100px)' });
+    expect(mounted).toHaveStyleRule('height', 'calc(100vh - 100px)');
   });
 });
