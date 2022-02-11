@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import propTypes from 'prop-types';
+import styled from 'styled-components';
 
 //As before, the function only takes a single argument, but now that argument is destructured.
 //The values for the object keys imgUrl, description, and attribution are assigned to variables
@@ -11,9 +11,24 @@ import propTypes from 'prop-types';
 //them into props. Since rest was originally created from the leftover props given to CarouselSlide,
 //everything but imgUrl, description, and attribution need to be passed through to the <figure>.
 
-const CarouselSlide = ({ imgUrl, description, attribution, ...rest }) => (
+const Img = styled.img`
+  object-fit: cover;
+  width: 100%;
+  height: ${(props) =>
+    typeof props.imgHeight === 'number'
+      ? `${props.imgHeight}px`
+      : props.imgHeight};
+`;
+
+const CarouselSlide = ({
+  imgUrl,
+  imgHeight,
+  description,
+  attribution,
+  ...rest
+}) => (
   <figure {...rest}>
-    <img src={imgUrl} />
+    <Img src={imgUrl} imgHeight={imgHeight} />
     <figcaption>
       <strong>{description}</strong> {attribution}
     </figcaption>
@@ -21,9 +36,14 @@ const CarouselSlide = ({ imgUrl, description, attribution, ...rest }) => (
 );
 
 CarouselSlide.propTypes = {
+  imgHeight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   imgUrl: PropTypes.string.isRequired,
-  description: propTypes.node.isRequired,
-  attribution: propTypes.node,
+  description: PropTypes.node.isRequired,
+  attribution: PropTypes.node,
+};
+
+CarouselSlide.defaultProps = {
+  imgHeight: 500,
 };
 
 export default CarouselSlide;
