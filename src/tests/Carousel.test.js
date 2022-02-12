@@ -55,6 +55,15 @@ describe('Carousel', () => {
     ).toBe('Next');
   });
 
+  it('renders the current slide as a CarouselSlide', () => {
+    let slideProps;
+    slideProps = wrapper.find(CarouselSlide).props();
+    expect(slideProps).toEqual({ ...CarouselSlide.defaultProps, ...slides[0] });
+    wrapper.setState({ slideIndex: 1 });
+    slideProps = wrapper.find(CarouselSlide).props();
+    expect(slideProps).toEqual({ ...CarouselSlide.defaultProps, ...slides[1] });
+  });
+
   describe('with a middle slide selected', () => {
     beforeEach(() => {
       wrapper.setState({ slideIndex: 1 });
@@ -85,15 +94,6 @@ describe('Carousel', () => {
       wrapper.find('[data-action="next"]').simulate('click');
       expect(wrapper.state('slideIndex')).toBe(0);
     });
-  });
-
-  it('renders the current slide as a CarouselSlide', () => {
-    let slideProps;
-    slideProps = wrapper.find(CarouselSlide).props();
-    expect(slideProps).toEqual({ ...CarouselSlide.defaultProps, ...slides[0] });
-    wrapper.setState({ slideIndex: 1 });
-    slideProps = wrapper.find(CarouselSlide).props();
-    expect(slideProps).toEqual({ ...CarouselSlide.defaultProps, ...slides[1] });
   });
 
   it('passes defaultImg and defaultImgHeight to the CarouselSlide', () => {

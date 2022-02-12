@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 class Carousel extends React.PureComponent {
   static propTypes = {
     defaultImg: CarouselSlide.propTypes.Img,
-    defaultImgHeight: CarouselSlide.propTypes.defaultImgHeight,
+    defaultImgHeight: CarouselSlide.propTypes.imgHeight,
     slides: PropTypes.arrayOf(PropTypes.shape(CarouselSlide.propTypes))
       .isRequired,
   };
