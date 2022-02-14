@@ -41,6 +41,8 @@ describe('HasIndex()', () => {
   });
 
   it('calls `onIndexChange` on decrement/increment', () => {
+    //indexDecrement() does not update wrapper
+    //https://enzymejs.github.io/enzyme/docs/api/ShallowWrapper/update.html
     const onIndexChange = jest.fn();
     wrapper.setProps({ index: 0, onIndexChange });
     wrapper.prop('indexDecrement')(3);

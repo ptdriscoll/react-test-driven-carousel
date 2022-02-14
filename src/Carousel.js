@@ -43,7 +43,7 @@ export class Carousel extends React.PureComponent {
       defaultImg,
       defaultImgHeight,
       slideIndex,
-      slideIndexDecrement: _slideIndexDecrement, //pulls prop out of ...rest spread
+      slideIndexDecrement: _slideIndexDecrement, //pull prop out of ...rest spread
       slideIndexIncrement: _slideIndexIncrement, //because ...rest props get passed to DOM
       slides,
       ...rest
