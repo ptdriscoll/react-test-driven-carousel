@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const capitalize = (word) => `${word[0].toUpperCase()}${word.slice(1)}`;
+const capitalize = word => `${word[0].toUpperCase()}${word.slice(1)}`;
 
 export default (Component, indexPropName) => {
   const defaultIndexPropName = `default${capitalize(indexPropName)}`;
@@ -36,7 +36,7 @@ export default (Component, indexPropName) => {
 
     state = { index: 0 };
 
-    handleDecrement = (upperBound) => {
+    handleDecrement = upperBound => {
       const { onIndexChange } = this.props;
       this.setState(({ index }) => {
         const newIndex = upperBound
@@ -49,7 +49,7 @@ export default (Component, indexPropName) => {
       });
     };
 
-    handleIncrement = (upperBound) => {
+    handleIncrement = upperBound => {
       const { onIndexChange } = this.props;
       this.setState(({ index }) => {
         const newIndex = upperBound ? (index + 1) % upperBound : index + 1;
