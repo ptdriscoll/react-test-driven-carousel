@@ -1,6 +1,6 @@
 # react-test-driven-carousel
 
-A React demonstration project using test-driven development with Jest and Enzyme. Also includes ESlint, Prettier, Babel, Webpack, Storybook, and Husky for Git hooks.
+A React demonstration project using test-driven development with Jest and Enzyme. Also includes ESlint, Prettier, Babel, Webpack, Storybook, and Husky for Git Hooks.
 
 ### References:
 
